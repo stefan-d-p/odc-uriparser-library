@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Logging.Abstractions;
 using OutSystems.ExternalLibraries.SDK;
 
 namespace Without.Systems.UriParser;
@@ -13,7 +14,7 @@ public class UriParser : IUriParser
         MapperConfiguration mapperConfiguration = new MapperConfiguration(cfg =>
         {
             cfg.CreateMap<Uri, Structures.Uri>();
-        });
+        }, NullLoggerFactory.Instance);
         
         _mapper = mapperConfiguration.CreateMapper();
     }
